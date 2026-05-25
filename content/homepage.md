@@ -6,6 +6,8 @@ My research interests focus on the geochemical, isotopic, and petrological model
 
 ## Education
 
+2022 - Present Bachelor Of Science in Geochemistry, Peking University. 
+
 ## Publications
 
 {{PUBLICATIONS}}
