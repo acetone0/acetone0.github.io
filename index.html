@@ -7,6 +7,11 @@
     <meta name="author" content="acetone0" />
     <title>Academic Webpage</title>
 
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
     <style>
        /* Defualt style */
         *{
@@ -17,8 +22,15 @@
 
         /* Body style */
         body{
-        font-family:-apple-system,BlinkMacSystemFont,
-        "Segoe UI",Helvetica,Arial,sans-serif;
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "PingFang SC",
+            "Microsoft YaHei",
+            "Noto Sans SC",
+            Helvetica,
+            Arial,
+            sans-serif;
         background:#ffffff;
         color:#333;
         }
@@ -47,11 +59,19 @@
         }
         
         /* ============== Site title ============== */
-        .site-title{
+        .site-title a{
         font-size: 18px;
         font-weight: 700;
-        color: #333333;        
+        color: #333333; 
+        text-decoration: none;       
         cursor: pointer;
+        }
+
+        .site-title span{
+            font-size: 16px;
+            font-weight: 700;
+            color: #333333;            
+            margin-left: 3px;
         }
 
         /* ============== Navigation menu ============== */
@@ -77,22 +97,6 @@
             transform: translateY(2px);
         }
 
-        /* Theme / settings icon */
-        .theme-btn{
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 22px;
-
-            transform-origin: center;
-            transition: 0.2s;
-        }
-
-        .theme-btn:hover{
-            transform: rotate(30deg);
-            color: #000000;
-        }
-
         .menu-toggle{
             display:none;
             font-size:30px;
@@ -102,6 +106,164 @@
 
         .menu-toggle:hover{
             color: #000000;
+        }
+
+        /* ============= Main page container =============*/
+        .container{
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            gap: 70px;
+            padding: 50px 40px;
+        }
+
+        /* ============= Left sidebar container ============= */
+        .sidebar{
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        /* ============== Profile image ============== */
+        .avatar{
+            width: 140px;
+            height: 140px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            background: #ececec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;            
+        }
+
+        .avatar img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ============== Sidebar name ============== */        
+        .sidebar-name{
+            font-size: 30px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 16px;
+        }
+
+        /* ============== Short biography ============== */
+        .sidebar-bio{
+            font-size: 17px;
+            line-height: 1.6;
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        /* ============== Contact information ============== */
+        .sidebar-list{
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Each item */
+        .sidebar-list li{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 20px 0px;
+            color: #555555;
+        }
+
+        .sidebar-list a,
+        .sidebar-list a:visited{
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s;
+        }
+
+        .sidebar-list i{
+            width: 20px;
+            text-align: center;
+            margin-right: 10px;
+            color: inherit;
+        }
+
+        /* icon */
+        .sidebar-list .icon{
+            width: 22px;
+            text-align: center;
+            color: inherit;
+        }
+
+        /* Hover effect for contact items */
+        .sidebar-list a:hover{
+            color: #000000;
+        }
+
+        /* ============== Main content area ============== */
+
+        .content{
+            min-width: 0;
+            flex: 1;
+        }
+
+        .main-content{
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 40px;
+            background: #ffffff;
+            line-height: 32px;
+            font-size: 18px;
+        }
+
+        /* ============== Topography ============== */
+        
+        /* Title */
+
+        .main-content h1,
+        .main-content h2,
+        .main-content h3,
+        .main-content h4{
+            color: #3f4349;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-top: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .main-content h1{ font-size: 32px; }
+        .main-content h2{ font-size: 28px; }
+        .main-content h3{ font-size: 22px; }
+        .main-content h4{ font-size: 18px; }
+
+        /* Paragraph */
+        .main-content p{
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: left;
+            color: #444444;
+            margin-bottom: 24px;
+        }
+
+        /* Links */
+        .main-content a{
+            color: #444444;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .main-content a:hover{
+            color: #2b7ea1;
+            text-decoration: underline;
+        }
+
+        /* Reference */
+        .main-content blockquote{
+            border-left: 4px solid #52adc8;
+            padding-left: 18px;
+            margin: 28px 0;
+            color: #666666;
+            font-style: italic;
+            line-height: 1.6;
         }
 
          /* ======== Responsive design for mobile devices ======== */
@@ -162,16 +324,53 @@
                 text-align: left;
             }
 
-            .nav-menu.active .theme-btn {
-                padding: 6px 10px;
-                border-radius: 6px;
-                
-                transition: all 0.25s ease;
-                
+            .container{
+                flex-direction: column;
+                padding: 20px;
             }
 
             .menu-toggle {
                 display: block;
+            }
+
+            .sidebar{
+                width: 100%;
+                text-align: center;
+            }
+
+            .avatar{
+                margin: auto;
+                margin-bottom: 30px;
+            }
+
+            .sidebar-list{
+                width: 220px;
+                margin: 0 auto;
+                padding: 0;
+                align-items: left;
+            }
+
+            .sidebar-list li,
+            .sidebar-list a{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                gap: 10px;
+                text-align: left;
+            }
+
+            .sidebar-list i{
+                width: 22px;
+                flex-shrink: 0;
+                text-align: center
+            }
+
+            .content{
+                width: 100%;
+            }
+
+            .main-content{
+                max-width: 100%;
             }
         }
 
@@ -187,7 +386,10 @@
 
         <!-- Website title / logo -->
         <div class="site-title">
-        Homepage
+            <a href="#" data-target="home">
+                Ye Zheng
+                <span style = "font-size: 18px;">郑烨</span>
+            </a>
         </div>
 
         <!-- Hamburger menu button -->
@@ -197,25 +399,99 @@
 
         <!-- Navigation menu -->
         <nav class="nav-menu" id="navMenu">
-            <a href="#">Home</a>
-            <!-- Publication page -->
-            <a href="#">Publications</a>
-            <!-- Academic talks / presentations -->
-            <a href="#">Talks</a>
-            <!-- Curriculum Vitae -->
-            <a href="#">CV</a>
-            <!-- Theme / settings icon -->
-            <button class="theme-btn">
-                ⚙
-            </button>
+            <!-- Home -->
+            <a href="#" data-target="home">Home</a>
+            <!-- Education -->
+            <a href="#" data-target="education">Education</a>
+            <!-- Publication -->
+            <a href="#" data-target="publications">Publications</a>
         </nav>
 
     </div>
 
     </header>
 
-    <script>
+    <main class="container">
+        <!-- ============= Left sidebar ============= -->
+        
+        <aside class="sidebar">
 
+            <!-- Profile image -->
+            <div class="avatar">
+                <img src="./content/avatar.png" alt="Profile Image">
+            </div>
+
+            <!-- Name -->
+            <h2 class="sidebar-name">Ye Zheng </h2>
+
+            <!-- Short biography -->
+            <p class="sidebar-bio">
+                the final year undergraduate at Peking University 
+            </p>
+
+            <!-- Contact information -->
+            <ul class="sidebar-list">
+                <li> 
+                    <i class="fa-solid fa-graduation-cap"></i> 
+                    Peking University, China
+                </li>
+
+                <li> 
+                    <a href="mailto:zy_acetone0@stu.pku.edu.cn">
+                        <i class="fa-solid fa-envelope"></i>
+                            zy_acetone0@stu.pku.edu.cn<br>
+                    </a>
+                </li>
+                <li>
+                    <i class="fa-brands fa-orcid"></i> 
+                    0009-0001-1824-0307
+                </li>
+                <li>
+                    <a href="https://scholar.google.com/citations?user=HYLYyHwAAAAJ&hl=en">
+                        <i class="fa-brands fa-google-scholar"></i> 
+                        Google Scholar
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/acetone0">
+                        <i class="fa-brands fa-github"></i> 
+                        Github
+                    </a>
+                </li>  
+            </ul>
+
+        </aside>
+
+        <!-- ============= Main content area ============= -->
+        <section class="content">
+            <div class="main-content">
+                Loading content...
+            </div>
+                
+        </section>
+        
+    </main>
+
+    <script src="loadHomepage.js"></script>
+    <script>
+    
+    const renderer = new marked.Renderer();
+    renderer.heading=function(token){
+        const text = token.text;
+        const level = token.depth;
+        
+        const id = text
+            .toLowerCase()
+            .trim()
+            .replace(/[^\w]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+
+        return `<h${level} id="${id}">${text}</h${level}>`;
+    };
+
+    // Load homepage content
+    loadHomepage();
+    
     /* Toggle mobile navigation menu */
     function toggleMenu(){
         console.log("Toggling menu");
@@ -242,7 +518,19 @@
         document.getElementById("navMenu")
                 .classList.remove("active");
     });
-
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('data-target');
+            const targetElement=document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    })
     </script>
 </body>
 </html>
